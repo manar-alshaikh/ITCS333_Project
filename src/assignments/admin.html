@@ -1,0 +1,127 @@
+<!--
+<?php
+require_once __DIR__ . "/../../config/Config.php";
+//Allow logged-in user (Teacher/Admin) to full CRUD of assignments:
+if (!isLoggedIn() || !isAdmin()) {
+    header("Location: ../auth/login.php");
+    exit();
+}
+?>
+-->
+<!--
+  Requirement: Create the Admin View for Assignments
+
+  Instructions:
+  Fill in the HTML elements as described in the comments.
+  This page allows the teacher (admin) to perform full CRUD operations on course assignments.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/src/assignments/admin.js" defer></script>
+    <title>Manage Assignments</title>
+    <!-- Background CSS/JS -->
+    <link rel="stylesheet" href="/src/common/css/background.css">
+    <script src="/src/common/js/background.js" defer></script>
+    <!-- CSS FRAMEWORKS -->
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <!-- CUSTOM CSS FILES -->
+    <style>
+        h1,h2{text-align: center;}
+        legend{text-align: center; font-weight:bold;}
+        label{font-weight:bold;}
+        table th:nth-child(3) {text-align: center;}
+        #assignment-form
+        {
+            padding-left: 3rem; 
+            padding-right: 3rem;
+            padding-top: 2rem; 
+            padding-bottom: 2rem;
+        }
+        .delete-btn{background-color:#c72727; border-color:#c72727;}
+        .delete-btn:hover{background-color:#961b1b; border-color:#961b1b;}
+        .edit-btn{background-color:#FFC107; border-color:#FFC107;}
+        .edit-btn:hover{background-color:#E0A800; border-color:#E0A800;}
+        #add-assignment{background-color:#4CAF50; border-color:#4CAF50;}
+        #add-assignment:hover{background-color:#45a049; border-color:#45a049;}
+    </style>
+    <!-- FONTS --> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+
+
+</head>
+<body>
+    <div class="bg-animation">
+        <div class="neural-network" id="neuralNetwork"></div>
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <header>
+        <h1>Manage Assignments</h1>
+    </header>
+    <main>
+        <!-- Section 1: Add/Edit Assignment Form -->
+        <section>
+            <h2 style="color:green;">Add a New Assignment</h2>
+            <form id="assignment-form" action="#">
+                <fieldset>
+                    <legend>Assignment Details</legend>
+
+                    <label for="assignment-title">Assignment Title</label>
+                    <input id="assignment-title" type="text" required>
+
+                    <label for="assignment-description">Description</label>
+                    <textarea id="assignment-description" rows="5" required></textarea>
+
+                    <label for="assignment-due-date">Due Date</label>
+                    <input id="assignment-due-date" type="date" required>
+
+                    <label for="assignment-files">Attached Files or Links (one per line)</label>
+                    <textarea id="assignment-files" rows="3"></textarea>
+
+                    <button id="add-assignment" type="submit">Add Assignment</button>
+                </fieldset>
+            </form>
+        </section>
+        <!-- Section 2: Existing Assignments List -->
+        <section>
+            <h2 style="text-align: center">Current Assignments</h2>
+            <table id="assignments-table">
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Due Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="assignments-tbody">
+                    <!-- Dummy data for table structure demonstration -->
+                    <!-- First dummy Assignment row -->
+                    <!--<tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>-->
+                    <!-- Second dummy Assignment row 
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </td>
+                    </tr>-->
+                </tbody>
+            </table>
+             <a href="/assignments/list"><button type="button">Back</button></a>
+        </section>
+    </main>
+</body>
+</html>
